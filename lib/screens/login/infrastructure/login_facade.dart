@@ -22,6 +22,7 @@ class LoginFacade {
         username: username,
         password: password,
       );
+      if (token == null) return left('Invalid response');
       await _userTokenStorageProvider.saveUserToken(token);
       return right(unit);
     } catch (e) {

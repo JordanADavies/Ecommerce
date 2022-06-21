@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
-        if (state is LoginSuccess) {
+        if (state is LoginStateSuccess) {
           context.router.root.replaceAll([
             const CartWrapperRoute(children: [CategoriesRoute()])
           ]);

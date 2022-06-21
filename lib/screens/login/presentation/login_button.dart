@@ -13,11 +13,11 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(builder: (_, state) {
-      if (state is LoginLoggingIn) {
+      if (state is LoginStateLoggingIn) {
         return const Center(child: CircularProgressIndicator());
       }
 
-      if (state is LoginSuccess) {
+      if (state is LoginStateSuccess) {
         return const Icon(
           Icons.check_circle_rounded,
           size: 50.0,

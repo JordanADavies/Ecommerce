@@ -22,9 +22,9 @@ void main() {
         ),
       );
 
-      when(mockLoginCubit.state).thenReturn(LoginInitial());
+      when(mockLoginCubit.state).thenReturn(LoginStateInitial());
       when(mockLoginCubit.stream)
-          .thenAnswer((_) => Stream.value(LoginInitial()));
+          .thenAnswer((_) => Stream.value(LoginStateInitial()));
 
       await tester.pumpWidget(testableWidget);
 
@@ -44,9 +44,9 @@ void main() {
         ),
       );
 
-      when(mockLoginCubit.state).thenReturn(LoginLoggingIn());
+      when(mockLoginCubit.state).thenReturn(LoginStateLoggingIn());
       when(mockLoginCubit.stream)
-          .thenAnswer((_) => Stream.value(LoginLoggingIn()));
+          .thenAnswer((_) => Stream.value(LoginStateLoggingIn()));
 
       await tester.pumpWidget(testableWidget);
 
@@ -64,9 +64,9 @@ void main() {
         ),
       );
 
-      when(mockLoginCubit.state).thenReturn(LoginSuccess());
+      when(mockLoginCubit.state).thenReturn(LoginStateSuccess());
       when(mockLoginCubit.stream)
-          .thenAnswer((_) => Stream.value(LoginSuccess()));
+          .thenAnswer((_) => Stream.value(LoginStateSuccess()));
 
       await tester.pumpWidget(testableWidget);
 

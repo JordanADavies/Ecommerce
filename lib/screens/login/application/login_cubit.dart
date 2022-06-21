@@ -9,20 +9,20 @@ class LoginCubit extends Cubit<LoginState> {
 
   LoginCubit({LoginFacade? loginFacade})
       : _loginFacade = loginFacade ?? LoginFacade(),
-        super(LoginInitial());
+        super(LoginStateInitial());
 
   Future<void> login({
     required String username,
     required String password,
   }) async {
-    emit(LoginLoggingIn());
+    emit(LoginStateLoggingIn());
     final result = await _loginFacade.login(
       username: username,
       password: password,
     );
     result.fold(
-      (errorMessage) => emit(LoginFailed(errorMessage)),
-      (_) => emit(LoginSuccess()),
+      (errorMessage) => emit(LoginStateFailed(errorMessage)),
+      (_) => emit(LoginStateSuccess()),
     );
   }
 }

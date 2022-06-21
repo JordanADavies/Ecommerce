@@ -9,6 +9,53 @@ import 'http_client_test.mocks.dart';
 
 @GenerateMocks([Dio])
 void main() {
+  group('Http Client - Get', () {
+    test('returns response body on success', () async {
+      final mockDio = MockDio();
+      final httpClient = HttpClient(client: mockDio);
+
+      when(mockDio.get(any)).thenAnswer(
+        (_) async => Response<Map<String, dynamic>>(
+          statusCode: 200,
+          data: {'key': 'value'},
+          requestOptions: RequestOptions(path: 'test'),
+        ),
+      );
+
+      final response = await httpClient.get(path: 'test');
+
+      expect(response, {'key': 'value'});
+    });
+
+    test('returns api exception if client throws exception', () async {
+      final mockDio = MockDio();
+      final httpClient = HttpClient(client: mockDio);
+
+      when(mockDio.get(any)).thenThrow(Exception('Failed!'));
+
+      final request = httpClient.get(path: 'test');
+
+      expect(request, throwsA(isA<ApiException>()));
+    });
+
+    test('returns api exception if client returns status code 500', () async {
+      final mockDio = MockDio();
+      final httpClient = HttpClient(client: mockDio);
+
+      when(mockDio.get(any)).thenAnswer(
+        (_) async => Response<Map<String, dynamic>>(
+          statusCode: 500,
+          data: {},
+          requestOptions: RequestOptions(path: 'test'),
+        ),
+      );
+
+      final request = httpClient.get(path: 'test');
+
+      expect(request, throwsA(isA<ApiException>()));
+    });
+  });
+
   group('Http Client - Post', () {
     test('returns response body on success', () async {
       final mockDio = MockDio();

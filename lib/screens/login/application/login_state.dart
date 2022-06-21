@@ -3,14 +3,14 @@ part of 'login_cubit.dart';
 @immutable
 abstract class LoginState {}
 
-class LoginInitial extends LoginState {}
+class LoginStateInitial extends LoginState {}
 
-class LoginLoggingIn extends LoginState {}
+class LoginStateLoggingIn extends LoginState {}
 
-class LoginSuccess extends LoginState {}
+class LoginStateSuccess extends LoginState {}
 
-class LoginFailed extends LoginState {
+class LoginStateFailed extends LoginState {
   final String errorMessage;
 
-  LoginFailed(this.errorMessage);
+  LoginStateFailed(this.errorMessage);
 }

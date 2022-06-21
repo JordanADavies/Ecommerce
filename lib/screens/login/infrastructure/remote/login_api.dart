@@ -5,18 +5,18 @@ class LoginApi {
 
   LoginApi({HttpClient? client}) : _client = client ?? HttpClient();
 
-  Future<String> login({
+  Future<String?> login({
     required String username,
     required String password,
   }) async {
-    final response = await _client.post(
+    final response = await _client.post<Map<String, dynamic>>(
       path: 'https://fakestoreapi.com/auth/login',
       body: {
         'username': username,
         'password': password,
       },
     );
-
-    return 'token';
+    if (response == null || !response.containsKey('token')) return null;
+    return response['token'];
   }
 }

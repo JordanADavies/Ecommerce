@@ -6,12 +6,24 @@ class HttpClient {
 
   HttpClient({Dio? client}) : _client = client ?? Dio();
 
-  Future<Map<String, dynamic>?> post({
+  Future<T?> get<T>({required String path}) async {
+    try {
+      final response = await _client.get<T>(path);
+      if (response.statusCode != 200) {
+        throw ApiException(code: response.statusCode);
+      }
+      return response.data;
+    } catch (e) {
+      throw ApiException();
+    }
+  }
+
+  Future<T?> post<T>({
     required String path,
     Map<String, dynamic>? body,
   }) async {
     try {
-      final response = await _client.post<Map<String, dynamic>>(
+      final response = await _client.post<T>(
         path,
         data: body,
       );

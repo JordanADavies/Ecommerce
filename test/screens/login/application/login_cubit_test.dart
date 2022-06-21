@@ -23,8 +23,8 @@ void main() {
       },
       act: (cubit) => cubit.login(username: 'username', password: 'password'),
       expect: () => [
-        isA<LoginLoggingIn>(),
-        isA<LoginSuccess>(),
+        isA<LoginStateLoggingIn>(),
+        isA<LoginStateSuccess>(),
       ],
     );
 
@@ -40,8 +40,8 @@ void main() {
       },
       act: (cubit) => cubit.login(username: 'username', password: 'password'),
       expect: () => [
-        isA<LoginLoggingIn>(),
-        isA<LoginFailed>(),
+        isA<LoginStateLoggingIn>(),
+        isA<LoginStateFailed>(),
       ],
     );
   });
