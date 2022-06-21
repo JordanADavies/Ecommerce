@@ -36,6 +36,8 @@ class _LoginFormState extends State<LoginForm> {
               validator: (value) => value == null || value.isEmpty
                   ? 'Username must be entered.'
                   : null,
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.text,
             ),
             const SizedBox(height: 12.0),
             TextFormField(
@@ -44,6 +46,8 @@ class _LoginFormState extends State<LoginForm> {
               validator: (value) => value == null || value.isEmpty
                   ? 'Password must be entered.'
                   : null,
+              textInputAction: TextInputAction.unspecified,
+              keyboardType: TextInputType.visiblePassword,
             ),
             const SizedBox(height: 28.0),
             LoginButton(
