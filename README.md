@@ -7,3 +7,7 @@ The app uses auto_route, dartz, dio, flutter_bloc, freezed and hive. Includes Wi
 ## Getting Started
 
 Generated files are included.
+
+- Clone repo.
+- Run 'flutter pub get'.
+- Run app.
