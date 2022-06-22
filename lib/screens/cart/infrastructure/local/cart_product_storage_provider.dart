@@ -19,6 +19,13 @@ class CartProductStorageProvider {
     return await Hive.openBox<Map<String, dynamic>>(cartProductBoxName);
   }
 
+  Future<void> removeProduct({
+    required int id,
+  }) async {
+    final box = await _openBox();
+    await box.delete(id);
+  }
+
   Future<List<Map<String, dynamic>>> fetchProducts() async {
     final box = await _openBox();
     return box.isNotEmpty ? box.values.toList() : [];

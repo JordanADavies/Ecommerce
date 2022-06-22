@@ -15,7 +15,6 @@ class CartFacade {
       final products = productMaps.map((p) => Product.fromJson(p)).toList();
       return right(products);
     } catch (e) {
-      print(e);
       return left('$e');
     }
   }
@@ -26,6 +25,15 @@ class CartFacade {
         id: product.id,
         product: product.toJson(),
       );
+      return right(unit);
+    } catch (e) {
+      return left('$e');
+    }
+  }
+
+  Future<Either<String, Unit>> removeProduct(Product product) async {
+    try {
+      await _cartProductStorageProvider.removeProduct(id: product.id);
       return right(unit);
     } catch (e) {
       return left('$e');

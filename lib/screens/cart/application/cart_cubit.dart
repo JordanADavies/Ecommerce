@@ -27,4 +27,12 @@ class CartCubit extends Cubit<CartState> {
       (_) async => await fetchProducts(),
     );
   }
+
+  Future<void> removeProductFromCart({required Product product}) async {
+    final result = await _cartFacade.removeProduct(product);
+    await result.fold<Future<void>>(
+      (_) async => emit(CartStateFailed()),
+      (_) async => await fetchProducts(),
+    );
+  }
 }

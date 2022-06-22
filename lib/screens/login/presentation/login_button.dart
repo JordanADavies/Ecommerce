@@ -25,9 +25,18 @@ class LoginButton extends StatelessWidget {
         );
       }
 
-      return TextButton(
-        onPressed: onPressed,
-        child: const Text('Login'),
+      return Column(
+        children: [
+          if (state is LoginStateFailed)
+            Text(
+              state.errorMessage,
+              style: const TextStyle(color: Colors.red),
+            ),
+          TextButton(
+            onPressed: onPressed,
+            child: const Text('Login'),
+          ),
+        ],
       );
     });
   }

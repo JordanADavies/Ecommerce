@@ -1,7 +1,6 @@
-import 'package:ecommerce/screens/cart/application/cart_cubit.dart';
 import 'package:ecommerce/screens/products/domain/product.dart';
+import 'package:ecommerce/screens/products/presentation/add_to_cart_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductListItem extends StatelessWidget {
   final Product product;
@@ -36,16 +35,7 @@ class ProductListItem extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 16.0),
-            TextButton.icon(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.black),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-              ),
-              onPressed: () =>
-                  context.read<CartCubit>().addProductToCart(product: product),
-              icon: const Icon(Icons.add_shopping_cart),
-              label: const Text('Add to Cart'),
-            ),
+            AddToCartButton(product: product),
           ],
         ),
       ),
