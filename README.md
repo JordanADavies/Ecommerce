@@ -1,16 +1,9 @@
 # ecommerce
 
-A new Flutter project.
+An ecommerce app that uses https://fakestoreapi.com/. Handles login, displaying of categories, displaying of products and the ability to add products to your cart.
+
+The app uses auto_route, dartz, dio, flutter_bloc, freezed and hive. Includes Widget & Unit tests.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Generated files are included.
