@@ -12,7 +12,7 @@ class ProductsFacade {
       {required String category}) async {
     try {
       final response = await _productsApi.fetchProducts(category: category);
-      if (response == null) return left('No products');
+      if (response == null || response.isEmpty) return left('No products');
       final products = response.map(_mapToProduct).toList();
       return right(products);
     } catch (e) {

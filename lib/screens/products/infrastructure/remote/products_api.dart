@@ -11,6 +11,8 @@ class ProductsApi {
     final response = await _client.get<List<dynamic>>(
         path: 'https://fakestoreapi.com/products/category/$category');
     if (response == null) return null;
-    return response.map((element) => Map<String, dynamic>.from(element)).toList();
+    return response
+        .map((element) => Map<String, dynamic>.from(element))
+        .toList();
   }
 }
