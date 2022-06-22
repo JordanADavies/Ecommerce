@@ -10,7 +10,10 @@ class CategoriesFacade {
   Future<Either<String, List<String>>> fetchCategories() async {
     try {
       final categories = await _categoriesApi.fetchCategories();
-      if (categories == null) return left('No categories');
+      if (categories == null || categories.isEmpty) {
+        return left('No categories');
+      }
+
       return right(categories);
     } catch (e) {
       return left('$e');
