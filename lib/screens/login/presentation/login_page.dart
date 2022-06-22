@@ -26,8 +26,9 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
           ]);
         }
       },
-      child: const Scaffold(
-        body: SafeArea(
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Login')),
+        body: const SafeArea(
           child: LoginForm(),
         ),
       ),

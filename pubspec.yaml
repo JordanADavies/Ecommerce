@@ -26,6 +26,7 @@ dev_dependencies:
   bloc_test: ^9.0.3
   build_runner:
   flutter_lints: ^2.0.0
+  json_serializable: ^6.2.0
   mockito: ^5.2.0
 
 flutter:

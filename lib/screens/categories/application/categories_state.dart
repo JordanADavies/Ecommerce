@@ -14,7 +14,7 @@ class CategoriesStateLoaded extends CategoriesState {
 }
 
 class CategoriesStateFailed extends CategoriesState {
-  final String errroMessage;
+  final String errorMessage;
 
-  CategoriesStateFailed(this.errroMessage);
+  CategoriesStateFailed(this.errorMessage);
 }

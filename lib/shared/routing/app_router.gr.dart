@@ -23,7 +23,8 @@ class _$AppRouter extends RootStackRouter {
     },
     CartWrapperRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const CartWrapperPage());
+          routeData: routeData,
+          child: WrappedRoute(child: const CartWrapperPage()));
     },
     CategoriesRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
@@ -31,8 +32,11 @@ class _$AppRouter extends RootStackRouter {
           child: WrappedRoute(child: const CategoriesPage()));
     },
     ProductsRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductsRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const ProductsPage());
+          routeData: routeData,
+          child: WrappedRoute(
+              child: ProductsPage(key: args.key, category: args.category)));
     }
   };
 
@@ -79,8 +83,24 @@ class CategoriesRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ProductsPage]
-class ProductsRoute extends PageRouteInfo<void> {
-  const ProductsRoute() : super(ProductsRoute.name, path: 'products-page');
+class ProductsRoute extends PageRouteInfo<ProductsRouteArgs> {
+  ProductsRoute({Key? key, required String category})
+      : super(ProductsRoute.name,
+            path: 'products-page',
+            args: ProductsRouteArgs(key: key, category: category));
 
   static const String name = 'ProductsRoute';
+}
+
+class ProductsRouteArgs {
+  const ProductsRouteArgs({this.key, required this.category});
+
+  final Key? key;
+
+  final String category;
+
+  @override
+  String toString() {
+    return 'ProductsRouteArgs{key: $key, category: $category}';
+  }
 }

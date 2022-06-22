@@ -31,7 +31,7 @@ class CategoriesPage extends StatelessWidget with AutoRouteWrapper {
                       title: Text(e.toUpperCase()),
                       trailing: const Icon(Icons.chevron_right),
                       onTap: () =>
-                          context.router.navigate(const ProductsRoute()),
+                          context.router.navigate(ProductsRoute(category: e)),
                     ),
                   )
                   .toList(),
@@ -39,7 +39,7 @@ class CategoriesPage extends StatelessWidget with AutoRouteWrapper {
           }
 
           if (state is CategoriesStateFailed) {
-            return Center(child: Text(state.errroMessage));
+            return Center(child: Text(state.errorMessage));
           }
 
           return const Center(child: CircularProgressIndicator());
