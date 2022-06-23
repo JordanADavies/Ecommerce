@@ -13,8 +13,8 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
 
-  String? _username = 'mor_2314';
-  String? _password = '83r5^_';
+  String? _username;
+  String? _password;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,6 @@ class _LoginFormState extends State<LoginForm> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextFormField(
-              controller: TextEditingController.fromValue(
-                  const TextEditingValue(text: 'mor_2314')),
               onChanged: (value) => _username = value,
               validator: (value) => value == null || value.isEmpty
                   ? 'Username must be entered.'
@@ -38,8 +36,6 @@ class _LoginFormState extends State<LoginForm> {
             ),
             const SizedBox(height: 12.0),
             TextFormField(
-              controller: TextEditingController.fromValue(
-                  const TextEditingValue(text: '83r5^_')),
               onChanged: (value) => _password = value,
               obscureText: true,
               validator: (value) => value == null || value.isEmpty
