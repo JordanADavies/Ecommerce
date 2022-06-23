@@ -11,12 +11,12 @@ class CartProductStorageProvider {
     await box.put(id, product);
   }
 
-  Future<Box<Map<String, dynamic>>> _openBox() async {
+  Future<Box<Map>> _openBox() async {
     if (Hive.isBoxOpen(cartProductBoxName)) {
-      return Hive.box<Map<String, dynamic>>(cartProductBoxName);
+      return Hive.box<Map>(cartProductBoxName);
     }
 
-    return await Hive.openBox<Map<String, dynamic>>(cartProductBoxName);
+    return await Hive.openBox<Map>(cartProductBoxName);
   }
 
   Future<void> removeProduct({
@@ -28,6 +28,11 @@ class CartProductStorageProvider {
 
   Future<List<Map<String, dynamic>>> fetchProducts() async {
     final box = await _openBox();
-    return box.isNotEmpty ? box.values.toList() : [];
+    var productMaps = <Map<String, dynamic>>[];
+    for (int key in box.keys) {
+      final map = box.get(key)?.cast<String, dynamic>();
+      if (map != null) productMaps.add(map);
+    }
+    return productMaps;
   }
 }
