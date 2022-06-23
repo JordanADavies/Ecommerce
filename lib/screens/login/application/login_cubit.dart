@@ -1,6 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:ecommerce/screens/login/infrastructure/login_facade.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'login_state.dart';
 
